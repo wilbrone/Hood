@@ -11,5 +11,6 @@ urlpatterns = [
     path('profile/', views.profile, name='profile'),
     path('search/', views.search_hoods, name='search'),
     path('addneighborhood',views.addNeighborhood,name="addNeighborhood"),
+    path('details/<id>/' , views.neighborhood_details, name='details' ),
     
 ]
