@@ -59,4 +59,20 @@ def profile(request):
         'p_form':p_form
     }
 
-    return render(request, 'all-dtls/profile.html',locals())
+    return render(request, 'registration/profile.html',locals())
+
+
+
+def search_hoods(request):
+    if 'search' in request.GET and request.GET['search']:
+        search_term=request.GET.get('search')
+        searched_hoods=Neighborhood.search_by_name(search_term)
+        message=f'{search_term}'
+
+        return render(request,'all-dtls/search.html',{"message":message,"searched_hoods":searched_hoods})
+
+    else:
+        message="You haven't searched for any term"
+
+        return render(request, 'all-dtls/search.html',{"message":message})
+
