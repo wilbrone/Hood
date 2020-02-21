@@ -1,7 +1,8 @@
+{% extends 'base.html' %}
 {% load bootstrap4 %} 
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en" dir="ltr">
 
 <head>
   <meta charset="utf-8">
@@ -16,7 +17,7 @@
 </head>
 
 <body>
-
+  {% block content %}
   <form  action="{%url 'new_business' neighborhood.id %}" method="post" enctype="multipart/form-data">
     {%csrf_token%}
 
@@ -26,10 +27,11 @@
     <input type="submit" class="btn btn-success btn-lg" value="Post">
   </form>
 
-   {% block scripts %}
+  {% endblock %}
+  {% block scripts %}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  {% bootstrap_javascript %} {% endblock %}
-
+  {% bootstrap_javascript %} 
+  {% endblock %}
 </body>
 
 </html>
