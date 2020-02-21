@@ -30,3 +30,41 @@ class Profile(models.Model):
 
     def delete_profile(self):
         self.delete()
+
+
+
+class Neighborhood(models.Model):
+    name=models.CharField(max_length=60)
+    location=models.CharField(max_length=60)
+    population=models.IntegerField()
+    health_number = models.CharField(max_length=20)
+    police_number = models.CharField(max_length=20)
+    image = models.ImageField(upload_to = 'images/')
+    user = models.ForeignKey("Profile", on_delete=models.CASCADE)
+
+
+    def create_neighborhood(self):
+        self.save()
+
+    def delete_neighborhood(self):
+        self.delete()
+
+    @classmethod
+    def search_by_name(cls,search_term):
+        neighborhood=cls.objects.filter(name__icontains=search_term)
+        return neighborhood    
+
+    @classmethod
+    def get_neighborhood(cls):
+        hood = Neighborhood.objects.all()
+        return hood
+
+    @classmethod
+    def update_neighborhood(cls,id,name):
+        updated = Neighborhood.objects.filter(id=Neighborhood.id).update(name=name)
+        return updated
+
+    @classmethod
+    def update_population(cls,id,population):
+        occupied = Neighborhood.objects.filter(id=Neighborhood.id).update(population=population)
+        return occupied

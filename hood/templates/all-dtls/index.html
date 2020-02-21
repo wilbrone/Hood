@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{{block.super}}
+
+<br>
+<br>
+<br>
+
+
+<div class="container">
+  <div class="row">
+    {% for neighborhood in hoods %}
+    <div class="col-md-4" style="">
+
+      <div class="w3-card" style="width:100%; overflow:hidden;">
+        <header class="w3-container w3-light-grey container">
+          <hr>
+          <h4><i>{{ neighborhood.name }}</i></h4>
+          <p class='article-content'>location: {{ neighborhood.location }}</p>
+          <p class='article-content'>population: {{ neighborhood.population }}</p>
+          <p class="article-content">posted by: {{ neighborhood.user.user | title }}</p>
+        </header>
+        <br>
+        <div class="w3-container">
+          <img src="{{ neighborhood.image.url }}" alt="photo" style="width:100%;">
+        </div>
+        <footer class="w3-container container">
+          <br>
+          <a href="{% url 'details' neighborhood.id %}" style="text-decoration:none;"><button class="btn btn-outline-success center-block">Join</button></a>
+          <br>
+        </footer>
+      </div>
+      <br><br><br><br>
+
+    </div>
+    {%endfor%}
+  </div>
+  <a href="{% url 'addNeighborhood' %}">
+    <button class="btn  btn-success" style="bottom:3%;right:3%;border-radius: 50%;border: none;padding: 20px;text-align: center;text-decoration: none;display: inline-block;margin: 4px 2px; position: fixed;">
+      <i class="fa fa-plus fa-lg" aria-hidden="true"></i>
+    </button>
+  </a>
+</div>
+
+{% endblock %}
+
+
+{% comment %} {%url 'detail' neighbourhood.id %} {% endcomment %}
