@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Neighbourhood</title>
+</head>
+
+<body>
+  {% block content %}
+  <form action="{% url 'new_post' neighborhood.id %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% for field in form %}
+        {% bootstrap_field field %}
+    {% endfor %}
+    <button type="submit">Upload</button>
+  </form>
+  {% endblock %}
+</body>
+
+</html>

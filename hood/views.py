@@ -101,3 +101,38 @@ def neighborhood_details(request,id):
     neighborhood=Neighborhood.objects.get(pk = id)
     return render(request,'all-dtls/details.html',{'neighborhood':neighborhood,'businesses':businesses,'posts':posts})
 
+
+@login_required(login_url='login')
+def new_business(request,pk):
+    current_user = request.user
+    neighborhood = get_object_or_404(Neighborhood,pk=pk)
+    if request.method == 'POST':
+        business_form = NewBusinessForm(request.POST, request.FILES)
+        if business_form.is_valid():
+            business = business_form.save(commit=False)
+            business.user = current_user
+            business.neighborhood=neighborhood
+            business.save()
+        return redirect('details', id = neighborhood.id)
+
+    else:
+        business_form = NewBusinessForm()
+    return render(request, 'all-dtls/new_business_form.html', {"form": business_form,'neighborhood':neighborhood})
+
+
+@login_required(login_url='login')
+def new_post(request,pk):
+    current_user = request.user
+    neighborhood = get_object_or_404(Neighborhood,pk=pk)
+    if request.method == 'POST':
+        post_form = NewPostForm(request.POST, request.FILES)
+        if post_form.is_valid():
+            post = post_form.save(commit=False)
+            post.user = current_user
+            post.neighborhood=neighborhood
+            post.save()
+        return redirect('details',id = neighborhood.id)
+
+    else:
+        post_form = NewPostForm()
+    return render(request, 'all-dtls/new_post_form.html', {"form": post_form,'neighborhood':neighborhood})
