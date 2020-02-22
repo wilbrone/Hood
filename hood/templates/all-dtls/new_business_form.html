@@ -19,7 +19,10 @@
 <body>
   {% block content %}
   <div class="container">
-    <form  action="{%url 'new_business' neighborhood.id %}" method="post" style="padding-top:2em;width:80%;margin:0 auto;" enctype="multipart/form-data">
+    <form  action="{%url 'new_business' neighborhood.id %}" method="post" style="padding-top:2em;width:70%;margin:0 auto;" enctype="multipart/form-data">
+      <legend>
+        <strong><em>Add New Business</em></strong>
+      </legend>
       {%csrf_token%}
 
       {% for field in form %}

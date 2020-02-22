@@ -3,71 +3,73 @@
 {% load static %}
 
 {%block content%}
-<div class="container">
-    <div class="row">
-        <div style="margin-top:20px;" class='col-md-4'>
-            <div style="width:100%;" class="w3-container card">
+<div class="" style="height:90%; width:100%; background-image: url({{ neighborhood.image.url }});background-size: 100%;">
+    <div class="container" style="height:100%;">
+      <div class="row" style="justify-content:space-between;">
+          <div style="margin-top:20px;" class='col-md-4'>
+              <div style="width:100%;" class="w3-container card">
 
-                <div class="w3-card" style="width:100%; margin-top:2em;">
-                  <header class="w3-container w3-light-grey container">
-                    <h4>{{ neighborhood.name }}</h4>
-                    <p class='article-content'>location: {{ neighborhood.location }}</p>
-                    <p class='article-content'><span style="color:red;">health hotline:</span> {{ neighborhood.health_number }}</p>
-                    <p class='article-content'><span style="color:red;">police hotline:</span> {{ neighborhood.police_number }}</p>
-                  </header>
-                  <br>
-                  <div class="w3-container">
-                    <img src="{{ neighborhood.image.url }}" alt="image" style="width:100%">
+                  <div class="w3-card" style="width:100%; margin-top:2em;">
+                    <header class="w3-container w3-light-grey container">
+                      <h4>{{ neighborhood.name }}</h4>
+                      <p class='article-content'>location: {{ neighborhood.location }}</p>
+                      <p class='article-content'><span style="color:red;">health hotline:</span> {{ neighborhood.health_number }}</p>
+                      <p class='article-content'><span style="color:red;">police hotline:</span> {{ neighborhood.police_number }}</p>
+                    </header>
+                    <br>
+                    <div class="w3-container">
+                      <img src="{{ neighborhood.image.url }}" alt="image" style="width:100%">
+                    </div>
+                    <footer class="w3-container">
+                      <br>
+                      <p class='article-content container'>population: {{ neighborhood.population }}</p>
+                      <br>
+                    </footer>
+
+
                   </div>
-                  <footer class="w3-container">
-                    <br>
-                    <p class='article-content container'>population: {{ neighborhood.population }}</p>
-                    <br>
-                  </footer>
-
-
-                </div>
-            </div>
-        </div>
+              </div>
+          </div>
 
 
 
 
-        <div style="overflow-y: scroll; background-color:#E5E7E9; margin-top:20px; margin-right:2px; margin-left:2px;" class="col-md-4">
-          <br>
-            <p>click 
-                <a class="img-thumbnail" href="{%url 'new_business' pk=neighborhood.pk %}" style="text-decoration:none;">here</a> 
-                to share your Business</p>
-            {% if businesses %}
-            {% for business in businesses %}
-
-            <p><b>name:</b> {{business.name}}</p>
-            <p><b>description:</b> {{business.description}}</p>
-            <p><b>contact:</b> {{business.email}}</p>
-            <hr>
-            {%endfor%}
-            {%else%}
-            <p><b>no business at the moment</b></p>
-            {%endif%}
-        </div>
-
-
-
-        <div style="overflow-y: scroll; background-color:#E5E7E9; margin-top:20px; margin-right:2px; margin-left:2px;" class="col-md-3">
-          <br>
-            <p><a class="img-thumbnail" href="{%url 'new_post' pk=neighborhood.pk %}" style="text-decoration:none;">
-                    share
-                </a> something with your Neighbors. </p>
-            {%if posts%}
-            {%for post in posts%}
-            <p><strong>{{post.user.username}}: </strong> {{post.post}}</p>
-            {%endfor%}
-            {%else%}
-            <p><b>no post by {{user.username}} at the moment</b></p>
-            {%endif%}
+          <div style="overflow-y: scroll; background-color:#E5E7E9; margin-top:20px; margin-right:2px; margin-left:2px;" class="col-md-4">
             <br>
-        </div>
-    </div>
+              <p>click 
+                  <a class="img-thumbnail" href="{%url 'new_business' pk=neighborhood.pk %}" style="text-decoration:none;">here</a> 
+                  to share your Business</p>
+              {% if businesses %}
+              {% for business in businesses %}
+
+              <p><b>name:</b> {{business.name}}</p>
+              <p><b>description:</b> {{business.description}}</p>
+              <p><b>contact:</b> {{business.email}}</p>
+              <hr>
+              {%endfor%}
+              {%else%}
+              <p><b>no business at the moment</b></p>
+              {%endif%}
+          </div>
+
+
+
+          <div style="overflow-y: scroll; background-color:#E5E7E9; margin-top:20px; margin-right:2px; margin-left:2px;" class="col-md-3">
+            <br>
+              <p><a class="img-thumbnail" href="{%url 'new_post' pk=neighborhood.pk %}" style="text-decoration:none;">
+                      share
+                  </a> something with your Neighbors. </p>
+              {%if posts%}
+              {%for post in posts%}
+              <p><strong>{{post.user.username}}: </strong> {{post.post}}</p>
+              {%endfor%}
+              {%else%}
+              <p><b>no post by {{user.username}} at the moment</b></p>
+              {%endif%}
+              <br>
+          </div>
+      </div> 
+    </div>  
 </div>
 
 

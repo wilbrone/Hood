@@ -11,13 +11,15 @@
 
 <body>
   {% block content %}
-  <form action="{% url 'new_post' neighborhood.id %}" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {% for field in form %}
-        {% bootstrap_field field %}
-    {% endfor %}
-    <button type="submit">Upload</button>
-  </form>
+  <div class="container">
+    <form action="{% url 'new_post' neighborhood.id %}" method="post" style="padding-top:2em;width:65%;margin:0 auto;" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for field in form %}
+            {% bootstrap_field field %}
+        {% endfor %}
+        <button type="submit">Upload</button>
+    </form>
+  </div>
   {% endblock %}
 </body>
 
