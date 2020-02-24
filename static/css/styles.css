@@ -1,6 +1,29 @@
-.btn{
-    border-radius: 15px;
-    padding: 20px;
-    width: 200px;
-    height: 150px;
+.back{
+    position: absolute; 
+    border:solid; 
+    height:100%; 
+    right:0%; 
+    top:0%; 
+    width:100%; 
+
+    background-image:url(https://images.unsplash.com/photo-1579033398426-20ee74a7cc5c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1402&q=80); 
+    background-size: 100%;  /* You can also use 'cover' instead */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;    /* for none scrollable background image */
 }
+.descrpt{
+    border: solid red;
+    position: absolute;
+    height: 70%;
+    width: 50%; 
+    right: 5%;
+    top: 8%;
+    color: white;
+    text-align: center;
+}
+.descrpt > * {
+    vertical-align: middle;
+    
+}
+

@@ -1,8 +1,11 @@
 {% extends 'registration/base.html' %}
 {% load crispy_forms_tags %}
-{% block content %}
 {% load static %}
-<div style="position: absolute; border:solid; height:100%; right:0%; top:0%; width:100%; background-image:url(https://images.unsplash.com/photo-1579033398426-20ee74a7cc5c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1402&q=80); background-size:100%; background-repeat: no-repeat;background-position: center;">
+
+{% block content %}
+{{block.super}}
+
+<div class="back" style="">
     <div class="container mt-4" style="border:solid; margin-left:0;margin-top:50px;">
         <div class="row">
             <div class="col-md-2"></div>
@@ -27,7 +30,10 @@
         </div>
     </div>
     <div class="descrpt">
-
+        <p>
+            Share information about your neighborhood and let those living around and those joining to get information about the hood.<br>
+            You also get a foru, where you can discuss matters affecting the Neighborhood
+        </p>
     </div>
 </div>
 {% endblock %}
