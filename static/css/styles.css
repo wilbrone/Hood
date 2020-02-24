@@ -1,6 +1,5 @@
 .back{
     position: absolute; 
-    border:solid; 
     height:100%; 
     right:0%; 
     top:0%; 
@@ -13,17 +12,15 @@
     background-attachment: fixed;    /* for none scrollable background image */
 }
 .descrpt{
-    border: solid red;
     position: absolute;
     height: 70%;
-    width: 50%; 
-    right: 5%;
-    top: 8%;
+    width: 55%; 
+    right: 4%;
+    top: 7%;
     color: white;
     text-align: center;
+    font-size: 2.5em;
+    font-family: 'Lacquer';
 }
-.descrpt > * {
-    vertical-align: middle;
-    
-}
+
 
